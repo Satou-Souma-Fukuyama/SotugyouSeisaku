@@ -1,0 +1,6 @@
+SotugyouSeisaku/.vsconfig
+/SotugyouSeisaku/Library
+/SotugyouSeisaku/Logs
+*.csproj
+*.sln
+/SotugyouSeisaku/UserSettings
