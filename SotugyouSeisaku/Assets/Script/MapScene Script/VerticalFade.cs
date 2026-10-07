@@ -20,20 +20,16 @@ public class VerticalFade : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(GameStartCoroutine());
+       
     }
 
      void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-           GameStart();
-        }
+     {
+       
+     }
+       
 
-
-    }
-
-    IEnumerator GameStartCoroutine()
+    public IEnumerator GameStartCoroutine()
     {
         // FadeIn
         yield return StartCoroutine(FadeInCoroutine());
@@ -55,34 +51,35 @@ public class VerticalFade : MonoBehaviour
 
             float t = Mathf.Clamp01(time / heroMove);
 
-            hero.position = Vector3.Lerp(
+            hero.position = Vector3.Lerp
+           (
                 heroStart,
                 heroEnd,
                 t
-            );
+           );
 
             yield return null;
         }
 
-        // 最終位置を確実に設定
+        // 最終位置を設定
         hero.position = heroEnd;
 
         // 勇者の移動が終わったらFadeOut
         yield return StartCoroutine(FadeOutCoroutine());
 
-        SceneManager.LoadScene(GameScene);
+        //SceneManager.LoadScene(GameScene);
     }
 
-    //画面が出てくる
-    IEnumerator FadeInCoroutine()
+
+
+    //FadeIn フェードイン
+    public IEnumerator FadeInCoroutine()
     {
         float time = 0f;
 
-        // 現在の中央位置
         Vector2 topStart = fadeTop.anchoredPosition;
         Vector2 bottomStart = fadeBottom.anchoredPosition;
 
-        // 画面外へ移動
         Vector2 topEnd = new Vector2(
             topStart.x,
             topStart.y + fadeTop.rect.height
@@ -110,27 +107,26 @@ public class VerticalFade : MonoBehaviour
 
         fadeTop.anchoredPosition = topEnd;
         fadeBottom.anchoredPosition = bottomEnd;
+
     }
 
-    //画面が黒くなる
-    IEnumerator FadeOutCoroutine()
+    //FadeOut フェードアウト
+    public IEnumerator FadeOutCoroutine()
     {
         float time = 0f;
 
-        // 現在の位置
         Vector2 topStart = fadeTop.anchoredPosition;
         Vector2 bottomStart = fadeBottom.anchoredPosition;
 
-        // 画面中央まで移動
         Vector2 topEnd = new Vector2(
-           topStart.x,
-           541f
-       );
+            topStart.x,
+            541f
+        );
 
         Vector2 bottomEnd = new Vector2(
-          bottomStart.x,
-          -540f
-      );
+            bottomStart.x,
+            -540f
+        );
 
         while (time < fadeTime)
         {
@@ -149,10 +145,11 @@ public class VerticalFade : MonoBehaviour
 
         fadeTop.anchoredPosition = topEnd;
         fadeBottom.anchoredPosition = bottomEnd;
+
     }
 
 
-
+    //ゲーム開始の関数
     public void GameStart()
     {
         StartCoroutine(GameStartCoroutine());
