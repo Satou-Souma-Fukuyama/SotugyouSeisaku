@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Rendering;
-
+using UnityEngine.SceneManagement;
 public class VerticalFade : MonoBehaviour
 {
     public RectTransform fadeTop;
@@ -16,6 +16,8 @@ public class VerticalFade : MonoBehaviour
 
     public float moveDistance;
 
+    public string GameScene;
+
     void Start()
     {
         StartCoroutine(GameStartCoroutine());
@@ -28,7 +30,7 @@ public class VerticalFade : MonoBehaviour
            GameStart();
         }
 
-       
+
     }
 
     IEnumerator GameStartCoroutine()
@@ -67,6 +69,8 @@ public class VerticalFade : MonoBehaviour
 
         // —EÒ‚ÌˆÚ“®‚ªI‚í‚Á‚½‚çFadeOut
         yield return StartCoroutine(FadeOutCoroutine());
+
+        SceneManager.LoadScene(GameScene);
     }
 
     //‰æ–Ê‚ªo‚Ä‚­‚é

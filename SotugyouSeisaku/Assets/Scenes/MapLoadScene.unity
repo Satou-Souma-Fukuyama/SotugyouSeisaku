@@ -333,6 +333,7 @@ MonoBehaviour:
   hero: {fileID: 1251375423}
   heroMove: 1
   moveDistance: 2.6
+  GameScene: GameScene
 --- !u!4 &449934718
 Transform:
   m_ObjectHideFlags: 0
