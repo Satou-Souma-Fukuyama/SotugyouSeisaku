@@ -4,3 +4,6 @@ SotugyouSeisaku/.vsconfig
 *.csproj
 *.sln
 /SotugyouSeisaku/UserSettings
+/SotugyouSeisaku/.vs
+/SotugyouSeisaku/obj
+/SotugyouSeisaku/Temp
