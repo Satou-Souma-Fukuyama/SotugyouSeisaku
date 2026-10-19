@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4896383154904801094}
   - component: {fileID: 7137520108144601951}
   - component: {fileID: 3558262941051911861}
+  - component: {fileID: 7301176174459625067}
   m_Layer: 0
   m_Name: toamato
   m_TagString: Untagged
@@ -165,3 +166,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3227dbe15d857a48a4f5fa760cc808c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7301176174459625067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172824784700289040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dffa724b8b8118d47b3496a638ae2a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyPoint: -6

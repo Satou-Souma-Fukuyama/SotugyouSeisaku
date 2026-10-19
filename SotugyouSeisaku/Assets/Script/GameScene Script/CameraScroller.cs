@@ -10,6 +10,10 @@ public class CameraScroller : MonoBehaviour
     [Header("スクロールにかかる時間")]
     public float scrollTime;
 
+    public GameObject ingredientsPanel1;
+    public GameObject ingredientsPanel2;
+    public GameObject ingredientsPanel3;
+
     private bool isScrolling = false;
 
     // カメラが移動中かどうか
@@ -54,5 +58,8 @@ public class CameraScroller : MonoBehaviour
         transform.position = endPosition;
         isScrolling = false;
         IsScrolling = false;
+        ingredientsPanel1.SetActive(true);
+        ingredientsPanel2.SetActive(true);
+        ingredientsPanel3.SetActive(true);
     }
 }
