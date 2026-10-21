@@ -14,6 +14,8 @@ public class CameraScroller : MonoBehaviour
     public GameObject ingredientsPanel2;
     public GameObject ingredientsPanel3;
 
+    
+
     private bool isScrolling = false;
 
     // ƒJƒƒ‰‚ªˆÚ“®’†‚©‚Ç‚¤‚©
@@ -22,6 +24,9 @@ public class CameraScroller : MonoBehaviour
     // ƒJƒƒ‰‚ğ‰E‚ÉˆÚ“®‚·‚é
     public void ScrollToBattle()
     {
+
+        Debug.Log("ScrollToBattle‚ªŒÄ‚Î‚ê‚Ü‚µ‚½");
+
         if (isScrolling) return;
 
         StartCoroutine(ScrollCoroutine());
@@ -32,7 +37,8 @@ public class CameraScroller : MonoBehaviour
         IsScrolling = true;
         isScrolling = true;
 
-        Vector3 startPosition = transform.position;
+
+       Vector3 startPosition = transform.position;
 
         // X•ûŒü‚ÉˆÚ“®
         Vector3 endPosition = startPosition

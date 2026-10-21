@@ -22,6 +22,9 @@ public class IngredientSpawner : MonoBehaviour
 
     public CameraScroller cameraScroller;
 
+    [Header("ゲーム進行管理")]
+    public GameManager gameManager;
+
     private bool isFinished = false;
 
 
@@ -66,33 +69,7 @@ public class IngredientSpawner : MonoBehaviour
         );
     }
 
-    public void Bakkiningtime()
-    {
-        if (isFinished) return;
-        isFinished = true;
 
-        // 食材パネルを非表示
-        if (ingredientsPanel != null)
-        {
-            ingredientsPanel.SetActive(false);
-        }
-
-        // タイマーを非表示にする
-        if (timerText != null)
-        {
-            timerText.gameObject.SetActive(false);
-        }
-
-        // カメラを移動
-        if (cameraScroller != null)
-        {
-            cameraScroller.ScrollToBattle();
-        }
-        else
-        {
-            Debug.LogWarning("CameraScrollerが設定されていません");
-        }
-    }
 
     // 袋詰めタイマー
     private IEnumerator BaggingTimer()
@@ -110,8 +87,26 @@ public class IngredientSpawner : MonoBehaviour
 
         UpdateTimerText(0);
 
-        // 60秒経過したら袋詰め終了
-        Bakkiningtime();
+        // GameManagerに袋詰め終了を通知
+        BaggingFinished();
+    }
+
+    // 袋詰め終了
+    public void BaggingFinished()
+    {
+        if (isFinished) return;
+        isFinished = true;
+
+        if (gameManager != null)
+        {
+            gameManager.BaggingFinished();
+        }
+        else
+        {
+            Debug.LogWarning(
+                "GameManagerが設定されていません"
+            );
+        }
     }
 
     // タイマー表示を更新
