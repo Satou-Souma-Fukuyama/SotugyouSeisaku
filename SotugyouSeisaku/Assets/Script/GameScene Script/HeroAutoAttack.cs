@@ -5,8 +5,8 @@ using UnityEngine;
 public class HeroAutoAttack : MonoBehaviour
 {
     [Header("攻撃設定")]
-    public int attackDamage = 10;
-    public float attackInterval = 10f;
+    public int attackDamage ;
+    public float attackInterval ;
 
     [Header("攻撃対象")]
     public EnemyHP targetSlime;
@@ -16,7 +16,7 @@ public class HeroAutoAttack : MonoBehaviour
     void Start()
     {
         // バトルシーンが始まったら自動で戦闘開始
-        StartBattle();
+       // StartBattle();
     }
 
     public void StartBattle()
@@ -36,7 +36,6 @@ public class HeroAutoAttack : MonoBehaviour
 
         while (battleStarted)
         {
-            // 10秒待つ
             yield return new WaitForSeconds(attackInterval);
 
             // スライムが存在する場合に攻撃

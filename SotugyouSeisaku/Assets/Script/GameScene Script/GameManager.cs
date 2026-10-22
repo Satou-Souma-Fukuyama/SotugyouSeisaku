@@ -11,19 +11,26 @@ public class GameManager : MonoBehaviour
     public CameraScroller cameraScroller;
 
     [Header("各ステージの敵")]
-    public GameObject Enemy;
+    public GameObject enemy;
+
+    [Header("ヒーロー")]
+
+    public GameObject hero;
+    public GameObject heroNamePanel;
 
     [Header("鍋のパネル")]
     public GameObject ingredientsPanel1;
     public GameObject ingredientsPanel2;
     public GameObject ingredientsPanel3;
 
-    [Header("敵のHPバー")]
+    [Header("敵のHPUI")]
     public GameObject hPBar;
+    public GameObject enemyName;
+    public GameObject enemyNamePanel;
 
     [Header("自動戦闘設定")]
-    public int attackDamage = 10;
-    public float attackInterval = 10f;
+    public int attackDamage;
+    public float attackInterval;
 
     private bool isBaggingFinished = false;
     private bool isBattleStarted = false;
@@ -40,8 +47,12 @@ public class GameManager : MonoBehaviour
         ingredientsPanel2.SetActive(false);
         ingredientsPanel3.SetActive(false);
         //  ---敵---
-        Enemy.SetActive(false);
+        enemy.SetActive(false);
         hPBar.SetActive(false);
+        enemyNamePanel.SetActive(false);
+        //ヒーロー
+        hero.SetActive(false);
+        heroNamePanel.SetActive(false); 
         //非表示ここまで
 
     }
@@ -97,8 +108,12 @@ public class GameManager : MonoBehaviour
         }
 
         // 敵を表示
-        if (Enemy != null)
-            Enemy.SetActive(true);
+        if (enemy != null)
+            enemy.SetActive(true);
+
+        // ヒーローを表示
+        if (hero != null)
+            hero.SetActive(true);
 
         // カメラ移動開始
         cameraScroller.ScrollToBattle();
@@ -113,7 +128,13 @@ public class GameManager : MonoBehaviour
 
         // 敵のHPバーを表示
         if (hPBar != null)
+        {
             hPBar.SetActive(true);
+        }
+
+        //敵とヒーローの名前パネル表示
+        enemyNamePanel.SetActive(true);
+        heroNamePanel.SetActive(true);
 
         Debug.Log("HP表示");
 
@@ -138,14 +159,14 @@ public class GameManager : MonoBehaviour
         if (isBattleStarted) return;
         isBattleStarted = true;
 
-        if (Enemy == null)
+        if (enemy == null)
         {
             Debug.LogWarning("Enemyが設定されていません");
             return;
         }
 
         // 敵本体または子オブジェクトからHPスクリプトを取得
-        enemyHP = Enemy.GetComponentInChildren<EnemyHP>();
+        enemyHP = enemy.GetComponentInChildren<EnemyHP>();
 
         if (enemyHP == null)
         {
